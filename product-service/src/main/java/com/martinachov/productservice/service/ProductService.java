@@ -46,4 +46,8 @@ public class ProductService {
         productToUpdate.setPrice(productDetail.getPrice());
         return productRepository.save(productToUpdate);
     }
+
+    public void deleteAllProduct() {
+        productRepository.deleteAll();
+    }
 }
