@@ -51,7 +51,7 @@ class ProductControllerWebMvcTest {
     @Test
     public void should_return_not_found_product_by_id() throws Exception {
         String id = "id_nonexistent";
-        when(productService.findOneById(id)).thenT ion.class);
+        when(productService.findOneById(id)).thenThrow(ProductNotFoundException.class);
         mockMvc.perform(get("/api/products/{id}", id))
                 .andExpect(status().isNotFound())
                 .andDo(print());
