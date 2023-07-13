@@ -5,6 +5,9 @@ import com.martinachov.orderservice.dto.OrderResponseDTO;
 import com.martinachov.orderservice.model.Order;
 import com.martinachov.orderservice.model.OrderLineItems;
 import com.martinachov.orderservice.service.OrderService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -22,10 +25,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/order")
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Order")
 public class OrderController {
 
     private final OrderService orderService;
     private final ModelMapper modelMapper;
+
     @PostMapping
     public ResponseEntity<OrderResponseDTO> placeOrder(@RequestBody OrderRequestDTO orderRequestDTO) {
         List<OrderLineItems> listItems = orderRequestDTO.getListOrderLineItemsDTO().stream()
