@@ -30,6 +30,7 @@ public class OrderService {
                 .orderNumber(UUID.randomUUID().toString())
                 .orderLineItemsList(listOrderItems)
                 .build();
+
         orderRepository.save(newOrder);
         return newOrder;
     }
