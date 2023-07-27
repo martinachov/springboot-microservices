@@ -29,7 +29,7 @@ import java.util.stream.Stream;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     public Order placeOrder(List<OrderLineItems> listOrderItems) {
         Order newOrder = Order.builder()
@@ -42,8 +42,8 @@ public class OrderService {
                 .collect(Collectors.toList());
 
         // Call Inventory Service
-        InventoryResponseDTO[] response = webClient.get()
-                .uri("http://localhost:8082/api/inventory",
+        InventoryResponseDTO[] response = webClientBuilder.build().get()
+                .uri("http://inventory-service/api/inventory",
                         uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodes)
                                 .build())
                 .retrieve()
