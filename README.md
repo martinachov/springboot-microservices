@@ -13,3 +13,9 @@
   - Integration Test
     - SpringBootTest
     - TestContainers
+
+## Microservices Patterns
+  - RPI 
+    - WebClient
+  - Service Discovery
+    - Eureka
